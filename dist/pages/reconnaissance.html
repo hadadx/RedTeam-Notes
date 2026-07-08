@@ -1,0 +1,49 @@
+<section class="page active recon-dashboard-page">
+  <h1>Reconnaissance</h1>
+  <p class="intro">
+    Start here during discovery. Pick the area you need, then jump directly into commands, payloads, and notes for that topic.
+  </p>
+
+  <div class="dashboard-grid">
+    <section class="dashboard-panel">
+      <div class="dashboard-panel-header">
+        <span class="dashboard-kicker">OSINT</span>
+        <h2>Public Intelligence</h2>
+      </div>
+      <p>Search engines, public repositories, emails, leaks, and exposed organization information.</p>
+      <div class="dashboard-actions">
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-osint-dorking.html">Dorking</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-osint-github.html">GitHub Search</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-osint-emails.html">Emails</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-osint-breaches.html">Breaches</button>
+      </div>
+    </section>
+
+    <section class="dashboard-panel">
+      <div class="dashboard-panel-header">
+        <span class="dashboard-kicker">Ports</span>
+        <h2>Port Scanning</h2>
+      </div>
+      <p>Map exposed TCP/UDP surfaces and move from broad discovery into targeted enumeration.</p>
+      <div class="dashboard-actions">
+        <button class="dashboard-button" type="button" data-page-link="pages/Nmap.html">Nmap</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-port-masscan.html">Masscan</button>
+      </div>
+    </section>
+
+    <section class="dashboard-panel dashboard-panel-wide">
+      <div class="dashboard-panel-header">
+        <span class="dashboard-kicker">Services</span>
+        <h2>Service Enumeration</h2>
+      </div>
+      <p>Enumerate protocols, banners, shares, names, mail behavior, web routes, and useful service metadata.</p>
+      <div class="dashboard-actions">
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-dns.html">DNS</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-svc-smb.html">SMB</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-svc-smtp.html">SMTP</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-svc-ftp.html">FTP</button>
+        <button class="dashboard-button" type="button" data-page-link="pages/recon-svc-http.html">HTTP</button>
+      </div>
+    </section>
+  </div>
+</section>

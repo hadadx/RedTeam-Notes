@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="4" y="8" width="56" height="48" rx="13" fill="#e8f3ff"/>
+  <path d="M12 41c8-13 17-19 28-27" fill="none" stroke="#8eb9df" stroke-width="3" stroke-linecap="round"/>
+  <path d="M16 18h32M16 46h32" fill="none" stroke="#b6d2ea" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="49" cy="18" r="5" fill="#f7c948"/>
+  <circle cx="15" cy="46" r="4" fill="#50c878"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="800" letter-spacing=".5" fill="#244a6f">OSINT</text>
+</svg>

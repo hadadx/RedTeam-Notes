@@ -1,0 +1,61 @@
+<section class="page active">
+  <h1>Linux Commands</h1>
+  <p class="intro">
+    Useful Linux commands for quick enumeration, files, processes, and networking.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>System</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">uname -a</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="command-row">
+      <code class="copy-text">id</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="command-row">
+      <code class="copy-text">cat /etc/os-release</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Files</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">find / -perm -4000 -type f 2&gt;/dev/null</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="command-row">
+      <code class="copy-text">find / -writable -type d 2&gt;/dev/null</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Network</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">ip a</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+    <div class="command-row">
+      <code class="copy-text">ss -tulpn</code>
+      <button class="copy-button" type="button" title="Copy">Copy</button>
+    </div>
+  </div>
+</section>
