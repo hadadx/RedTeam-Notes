@@ -1,0 +1,153 @@
+<section class="page active prose-page">
+  <h1>Active Directory</h1>
+  <p class="intro">
+    Active Directory (AD) is Microsoft's centralized directory service for managing identities, authentication,
+    authorization, and resources within a Windows domain. It enables administrators to centrally manage users,
+    computers, groups, policies, and permissions while providing secure access to network resources.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Objectives</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Centralize identity and access management.</li>
+    <li>Authenticate users and computers within the domain.</li>
+    <li>Authorize access to resources based on permissions.</li>
+    <li>Enforce security policies across the organization.</li>
+    <li>Simplify administration of large enterprise environments.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Core Components</h2>
+    <span></span>
+  </div>
+
+  <h3>Domain</h3>
+  <p class="content-text">
+    A logical administrative boundary that contains users, computers, groups, and other directory objects sharing a
+    common database and security policies.
+  </p>
+
+  <h3>Domain Controller (DC)</h3>
+  <p class="content-text">
+    A server that hosts Active Directory, stores the directory database, authenticates users, enforces security
+    policies, and replicates data with other Domain Controllers.
+  </p>
+
+  <h3>Forest</h3>
+  <p class="content-text">
+    The highest-level Active Directory structure. A forest contains one or more domains that share a common schema,
+    configuration, and Global Catalog.
+  </p>
+  <figure class="content-image">
+    <img src="images/ad-forest-example.png" alt="Active Directory forest example">
+  </figure>
+
+  <h3>Tree</h3>
+  <p class="content-text">
+    A collection of one or more domains connected through a hierarchical namespace and automatic trust relationships.
+  </p>
+
+  <h3>Organizational Unit (OU)</h3>
+  <p class="content-text">
+    A logical container used to organize directory objects and apply administrative delegation and Group Policies.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Directory Objects</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Users</li>
+    <li>Computers</li>
+    <li>Groups</li>
+    <li>Printers</li>
+    <li>Shared folders</li>
+    <li>Service Accounts</li>
+    <li>Organizational Units</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Authentication</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Active Directory primarily uses Kerberos for authentication and falls back to NTLM when Kerberos cannot be used.
+  </p>
+  <p class="content-text">
+    Authentication is performed through the Key Distribution Center (KDC) running on the Domain Controller.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Authorization</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    After authentication, Active Directory determines which resources a user can access based on:
+  </p>
+  <ul class="content-list">
+    <li>Security Groups</li>
+    <li>Access Control Lists (ACLs)</li>
+    <li>Access Control Entries (ACEs)</li>
+    <li>User privileges and permissions</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Group Policy (GPO)</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Group Policy allows administrators to centrally configure security settings, software deployment, user
+    configurations, scripts, and operating system policies across users and computers within the domain.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>DNS Integration</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Active Directory relies heavily on DNS for locating Domain Controllers, resolving services (SRV records), and
+    enabling clients to discover authentication and directory services.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Replication</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Changes made on one Domain Controller are replicated to other Domain Controllers to maintain a consistent
+    directory database across the domain or forest.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Benefits</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Centralized administration</li>
+    <li>Single Sign-On (SSO)</li>
+    <li>Scalable identity management</li>
+    <li>Policy-based security enforcement</li>
+    <li>Simplified resource management</li>
+    <li>High availability through replication</li>
+    <li>Fine-grained access control</li>
+  </ul>
+</section>

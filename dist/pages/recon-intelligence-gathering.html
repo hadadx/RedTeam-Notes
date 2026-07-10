@@ -1,0 +1,226 @@
+<section class="page active prose-page">
+  <h1>Reconnaissance</h1>
+  <p class="intro">
+    Intelligence Gathering is the process of collecting and analyzing information about a target before attempting exploitation. The objective is to understand the target's environment, identify valuable assets, discover potential attack vectors, and build an intelligence profile that supports subsequent phases of an engagement.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Objectives</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Identify the organization's attack surface.</li>
+    <li>Discover technical, organizational, and human assets.</li>
+    <li>Collect actionable intelligence for planning future operations.</li>
+    <li>Prioritize high-value targets and potential attack paths.</li>
+    <li>Reduce uncertainty before active testing begins.</li>
+  </ul>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>OSINT (Open Source Intelligence)</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Information obtained from publicly available sources, including:
+  </p>
+
+  <ul class="content-list">
+    <li>Search engines</li>
+    <li>DNS &amp; WHOIS records</li>
+    <li>Public documents and metadata</li>
+    <li>Social media</li>
+    <li>Code repositories</li>
+    <li>Certificate Transparency logs</li>
+    <li>Job postings</li>
+    <li>Public breach data</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Low risk of detection, large amount of available information, and cost effective.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Limitations</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Information may be outdated, inaccurate, manipulated, or incomplete.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Reconnaissance Types</h2>
+    <span></span>
+  </div>
+
+  <h3 class="content-heading">Passive Reconnaissance</h3>
+  <p class="content-text">
+    Collects intelligence without interacting directly with the target's infrastructure. Information is obtained from external sources to build an initial profile while minimizing the chance of detection.
+  </p>
+
+  <h3 class="content-heading">Typical activities</h3>
+  <ul class="content-list">
+    <li>WHOIS lookups</li>
+    <li>DNS enumeration</li>
+    <li>Search engine reconnaissance</li>
+    <li>Social media profiling</li>
+    <li>Public document analysis</li>
+    <li>Metadata extraction</li>
+  </ul>
+
+  <h3 class="content-heading">Semi-Passive Reconnaissance</h3>
+  <p class="content-text">
+    Collects information through interactions that resemble legitimate user activity. The objective is to gather additional intelligence while avoiding behavior that would normally trigger security monitoring.
+  </p>
+
+  <h3 class="content-heading">Active Reconnaissance</h3>
+  <p class="content-text">
+    Collects information through direct interaction with the target. This provides accurate and current intelligence but significantly increases the probability of detection.
+  </p>
+
+  <h3 class="content-heading">Typical activities</h3>
+  <ul class="content-list">
+    <li>Host discovery</li>
+    <li>Port scanning</li>
+    <li>Service enumeration</li>
+    <li>OS fingerprinting</li>
+    <li>Banner grabbing</li>
+    <li>Web enumeration</li>
+    <li>Vulnerability scanning</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Intelligence Categories</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Information gathering commonly focuses on:
+  </p>
+
+  <ul class="content-list">
+    <li>Organization information</li>
+    <li>Personnel and identities</li>
+    <li>Domains and DNS infrastructure</li>
+    <li>IP ranges and network topology</li>
+    <li>Hosts and exposed services</li>
+    <li>Technologies and software</li>
+    <li>Security controls</li>
+    <li>Business relationships</li>
+    <li>Physical locations</li>
+    <li>Cloud infrastructure</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Intelligence Gathering Levels</h2>
+    <span></span>
+  </div>
+
+  <h3 class="content-heading">Level 1 - Basic</h3>
+  <ul class="content-list">
+    <li>Mostly automated collection</li>
+    <li>Public information only</li>
+    <li>Minimal manual analysis</li>
+  </ul>
+
+  <h3 class="content-heading">Level 2 - Intermediate</h3>
+  <ul class="content-list">
+    <li>Automated collection with manual verification</li>
+    <li>Correlation between multiple information sources</li>
+    <li>Better understanding of the target's business</li>
+  </ul>
+
+  <h3 class="content-heading">Level 3 - Advanced</h3>
+  <ul class="content-list">
+    <li>Extensive manual research</li>
+    <li>Deep intelligence correlation</li>
+    <li>Human intelligence (HUMINT)</li>
+    <li>Business relationship analysis</li>
+    <li>Long-term reconnaissance</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>HUMINT (Human Intelligence)</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Information gathered from people rather than technical systems.
+  </p>
+
+  <h3 class="content-heading">Examples</h3>
+  <ul class="content-list">
+    <li>Employee identities</li>
+    <li>Organizational hierarchy</li>
+    <li>Business relationships</li>
+    <li>Public communications</li>
+    <li>Social engineering targets</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Footprinting</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    The process of mapping the target's external attack surface by identifying domains, networks, exposed systems, cloud assets, technologies, and publicly accessible resources.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Defense Identification</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Reconnaissance also attempts to identify defensive technologies that may influence later attack stages, including:
+  </p>
+
+  <ul class="content-list">
+    <li>Firewalls</li>
+    <li>Web Application Firewalls (WAF)</li>
+    <li>IDS / IPS</li>
+    <li>DLP solutions</li>
+    <li>Endpoint Protection (EDR/AV)</li>
+    <li>Application Whitelisting</li>
+    <li>Email Security</li>
+    <li>Authentication mechanisms</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Expected Outcome</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    A comprehensive intelligence profile that enables informed decision-making, prioritizes attack paths, and improves the effectiveness of subsequent penetration testing or adversary operations.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="http://www.pentest-standard.org/index.php/Intelligence_Gathering" target="_blank" rel="noreferrer">PTES</a>
+    <a href="https://attack.mitre.org/tactics/TA0043/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK</a>
+  </div>
+</section>

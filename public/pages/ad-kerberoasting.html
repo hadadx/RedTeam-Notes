@@ -1,0 +1,77 @@
+<section class="page active prose-page">
+  <h1>Kerberoasting</h1>
+  <p class="intro">
+    Kerberoasting is a Kerberos attack that targets service accounts (SPNs). An authenticated domain user requests a
+    TGS ticket for a service, extracts the encrypted ticket, and performs offline password cracking to recover the
+    service account's password.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>How It Works</h2>
+    <span></span>
+  </div>
+
+  <ol class="content-list">
+    <li>The attacker identifies service accounts with registered SPNs.</li>
+    <li>A TGS is requested from the Domain Controller.</li>
+    <li>The returned ticket is encrypted using the service account's password-derived key.</li>
+    <li>The ticket is cracked offline to recover the plaintext password.</li>
+  </ol>
+
+  <div class="content-image">
+    <img src="images/kerberoasting-flow.png" alt="Kerberoasting flow">
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Valid domain user credentials (TGT).</li>
+    <li>One or more service accounts with registered SPNs.</li>
+    <li>Network access to the Domain Controller.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Failure Conditions</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Strong, long service account passwords.</li>
+    <li>Modern Kerberos encryption (AES) instead of RC4 where applicable.</li>
+    <li>No accessible or vulnerable SPNs.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Usage Scenarios</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Targeting service accounts with elevated privileges.</li>
+    <li>During internal Active Directory assessments after obtaining a valid domain user account.</li>
+    <li>Identifying weak service account passwords for privilege escalation or lateral movement.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Important Notes</h2>
+    <span></span>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1558/003/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1558.003</a>
+  </div>
+</section>

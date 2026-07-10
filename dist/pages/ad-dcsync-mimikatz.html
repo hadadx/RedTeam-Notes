@@ -1,0 +1,49 @@
+<section class="page active prose-page">
+  <h1>Using Mimikatz</h1>
+  <p class="intro">
+    Mimikatz performs DCSync by impersonating a Domain Controller and requesting password data through the Active
+    Directory replication protocol. This can expose NTLM hashes and Kerberos keys for domain accounts.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Extracts credentials remotely without accessing NTDS.dit directly.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires replication privileges and is highly detectable by security monitoring solutions.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Dump Hash Of Specific User</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">lsadump::dcsync /user:corp\dave</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Dump Hash Of Administrator</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">lsadump::dcsync /user:corp\Administrator</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

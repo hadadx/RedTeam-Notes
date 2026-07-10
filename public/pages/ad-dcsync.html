@@ -1,0 +1,89 @@
+<section class="page active prose-page">
+  <h1>DCSync</h1>
+  <p class="intro">
+    DCSync is an Active Directory attack that allows an attacker to impersonate a Domain Controller and request
+    password data through the Directory Replication Service (DRS). Instead of accessing the NTDS.dit database directly,
+    the attacker abuses the normal replication process to retrieve NTLM hashes and Kerberos keys for any domain
+    account.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>How It Works</h2>
+    <span></span>
+  </div>
+
+  <ol class="content-list">
+    <li>The attacker gains an account with directory replication privileges.</li>
+    <li>A rogue replication request is sent to the Domain Controller using the DRS Remote Protocol (DRSUAPI).</li>
+    <li>The Domain Controller treats the attacker as a legitimate replication partner.</li>
+    <li>Password hashes and Kerberos keys for the requested accounts are returned.</li>
+  </ol>
+
+  <div class="content-image">
+    <img src="images/dcsync-flow.png" alt="DCSync replication flow">
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>
+      An account with Replicating Directory Changes, Replicating Directory Changes All, and Replicating Directory
+      Changes in Filtered Set permissions.
+    </li>
+    <li>Network access to a Domain Controller.</li>
+    <li>Valid domain credentials.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Failure Conditions</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>The required replication permissions are not assigned.</li>
+    <li>Replication traffic is blocked or restricted.</li>
+    <li>The replication request is denied by the Domain Controller.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Usage Scenarios</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Dumping credentials for any domain user, including Domain Administrators.</li>
+    <li>Obtaining NTLM hashes for Pass-the-Hash or offline password cracking.</li>
+    <li>Retrieving Kerberos keys for additional Kerberos-based attacks.</li>
+    <li>Post-exploitation after compromising a privileged account.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Important Notes</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Does not require direct access to the NTDS.dit file.</li>
+    <li>Abuses the legitimate Active Directory replication mechanism.</li>
+    <li>By default, Domain Admins, Enterprise Admins, and Administrators possess the required replication rights.</li>
+    <li>One of the most powerful Active Directory attacks because it can retrieve credentials for any domain account.</li>
+  </ul>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1003/006/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1003.006</a>
+  </div>
+</section>

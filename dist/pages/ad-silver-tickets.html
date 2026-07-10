@@ -1,0 +1,83 @@
+<section class="page active prose-page">
+  <h1>Silver Tickets</h1>
+  <p class="intro">
+    A Silver Ticket attack allows an attacker to forge a Kerberos Service Ticket (TGS) after obtaining the password
+    hash of a service account. The forged ticket provides access to a specific Kerberos service without contacting the
+    Domain Controller (KDC), making the attack more stealthy than other Kerberos ticket attacks.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>How It Works</h2>
+    <span></span>
+  </div>
+
+  <ol class="content-list">
+    <li>The attacker obtains the service account's password hash.</li>
+    <li>A forged TGS is created and encrypted using that hash.</li>
+    <li>The ticket can contain arbitrary user and group memberships.</li>
+    <li>
+      The forged ticket is presented directly to the target service, which validates it locally and, in most
+      environments, does not perform PAC validation with the KDC.
+    </li>
+  </ol>
+
+  <div class="content-image">
+    <img src="images/silver-tickets-flow.png" alt="Silver Tickets flow">
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Service account or machine account password hash.</li>
+    <li>Target service with a registered SPN.</li>
+    <li>Domain SID and target service information.</li>
+    <li>Access to the target service.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Failure Conditions</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Invalid or outdated service account hash.</li>
+    <li>Service account password has changed.</li>
+    <li>PAC validation or additional Kerberos security controls are enforced.</li>
+    <li>Incorrect domain or SPN information.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Usage Scenarios</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Accessing a specific service such as IIS, MSSQL, CIFS, or HTTP.</li>
+    <li>Lateral movement after compromising a service account.</li>
+    <li>Maintaining access to a compromised service while avoiding communication with the Domain Controller.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Important Notes</h2>
+    <span></span>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1558/002/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1558.002</a>
+    <a href="https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/silver-ticket-attack/" target="_blank" rel="noreferrer">CrowdStrike Silver Ticket Attack</a>
+  </div>
+</section>

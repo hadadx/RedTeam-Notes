@@ -1,0 +1,115 @@
+<section class="page active prose-page">
+  <h1>Kerberos</h1>
+  <p class="intro">
+    Kerberos is the primary authentication protocol used in Active Directory environments. It authenticates users and
+    services using encrypted tickets instead of transmitting passwords over the network. Kerberos provides Single
+    Sign-On (SSO), Mutual Authentication, and secure access to network resources through a trusted Key Distribution
+    Center (KDC).
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Objectives</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Securely authenticate users and services.</li>
+    <li>Eliminate password transmission over the network.</li>
+    <li>Provide Single Sign-On (SSO).</li>
+    <li>Support mutual authentication.</li>
+    <li>Protect against replay attacks using tickets and session keys.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Core Components</h2>
+    <span></span>
+  </div>
+
+  <h3>Key Distribution Center (KDC)</h3>
+  <p class="content-text">
+    A trusted service running on every Domain Controller that manages Kerberos authentication.
+  </p>
+
+  <h3>Authentication Server (AS)</h3>
+  <ul class="content-list">
+    <li>Authenticates users.</li>
+    <li>Issues a Ticket Granting Ticket (TGT).</li>
+  </ul>
+
+  <h3>Ticket Granting Server (TGS)</h3>
+  <ul class="content-list">
+    <li>Validates TGTs.</li>
+    <li>Issues Service Tickets (ST) for specific services.</li>
+  </ul>
+
+  <h3>Service Principal Name (SPN)</h3>
+  <p class="content-text">
+    A unique identifier for a service instance. The KDC uses the SPN to determine which Service Ticket to issue.
+  </p>
+
+  <h3>Session Keys</h3>
+  <p class="content-text">
+    Temporary encryption keys generated during authentication to secure communication between clients and services.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Authentication Flow</h2>
+    <span></span>
+  </div>
+
+  <ol class="content-list">
+    <li>Client requests authentication (AS-REQ).</li>
+    <li>KDC authenticates the user and returns a TGT (AS-REP).</li>
+    <li>Client requests access to a service (TGS-REQ).</li>
+    <li>KDC returns a Service Ticket (TGS-REP).</li>
+    <li>Client presents the ticket to the service (AP-REQ).</li>
+    <li>Service validates the ticket and optionally performs mutual authentication (AP-REP).</li>
+  </ol>
+  <figure class="content-image content-image-md">
+    <img src="images/kerberos-authentication-flow.png" alt="Kerberos authentication flow">
+  </figure>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Passwords are never transmitted, Single Sign-On (SSO) is supported, mutual authentication is provided, tickets are
+    protected with strong encryption and limited lifetimes, and the protocol is generally more secure than NTLM.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Common Attacks</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Kerberoasting</li>
+    <li>AS-REP Roasting</li>
+    <li>Golden Ticket</li>
+    <li>Silver Ticket</li>
+    <li>Pass-the-Ticket (PtT)</li>
+    <li>Overpass-the-Hash</li>
+    <li>Delegation Abuse</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Best Practices</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Prefer Kerberos over NTLM.</li>
+    <li>Protect the KRBTGT account.</li>
+    <li>Use strong passwords or gMSAs for service accounts.</li>
+    <li>Keep system clocks synchronized.</li>
+    <li>Monitor Kerberos authentication events.</li>
+  </ul>
+</section>

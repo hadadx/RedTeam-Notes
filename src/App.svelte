@@ -10,6 +10,7 @@
       label: "Reconnaissance",
       phase: "Discovery",
       icon: "icons/espionage.png",
+      page: "pages/recon-intelligence-gathering.html",
       tabs: [
         {
           id: "osint",
@@ -53,25 +54,154 @@
     },
     {
       id: "web",
-      label: "Web Vuln",
+      label: "Web Testing",
       phase: "Exploitation",
-      icon: "icons/web-vuln-icon.png",
+      icon: "icons/owasp-symbol-icon.png",
       tabs: [
         { id: "lfi", label: "LFI", shortLabel: "LFI", phase: "File Inclusion", page: "pages/web-lfi.html" },
         { id: "sqli", label: "SQL Injection", shortLabel: "SQL", phase: "Injection", page: "pages/web-sqli.html" },
         { id: "xss", label: "XSS", shortLabel: "XSS", phase: "Client-Side", page: "pages/web-xss.html" }
+      ]
+    },
+    {
+      id: "ad",
+      label: "Active Directory",
+      phase: "Internal",
+      icon: "icons/ad-icon.png",
+      page: "pages/active-directory.html",
+      tabs: [
+        {
+          id: "ad-info-resource",
+          label: "Information Resource",
+          shortLabel: "INFO",
+          phase: "Resources",
+          page: "pages/ad-information-resource.html",
+          children: [
+            {
+              id: "ad-auth-method",
+              label: "Authentication Method",
+              phase: "Authentication",
+              page: "pages/ad-authentication-method.html",
+              children: [
+                { label: "NTLM", page: "pages/ad-authentication-ntlm.html" },
+                { label: "Kerberos", page: "pages/ad-authentication-kerberos.html" }
+              ]
+            }
+          ]
+        },
+        { id: "ad-enum", label: "Enumeration", shortLabel: "ENUM", phase: "Enumeration", page: "pages/ad-enumeration.html" },
+        {
+          id: "ad-auth-attacks",
+          label: "Authentication Attacks",
+          shortLabel: "AUTH",
+          phase: "Authentication",
+          page: "pages/ad-authentication-attacks.html",
+          children: [
+            {
+              id: "ad-password-spraying",
+              label: "Password Spraying",
+              page: "pages/ad-password-spraying.html",
+              children: [
+                { label: "Using Spray-Passwords.ps1", page: "pages/ad-spray-passwords-ps1.html" },
+                { label: "Using NetExec", page: "pages/ad-password-spraying-netexec.html" },
+                { label: "Using Kerbrute", page: "pages/ad-password-spraying-kerbrute.html" }
+              ]
+            },
+            {
+              id: "ad-as-rep-roasting",
+              label: "AS-REP Roasting",
+              page: "pages/ad-as-rep-roasting.html",
+              children: [
+                { label: "Using impacket-GetNPUsers", page: "pages/ad-as-rep-roasting-getnpusers.html" },
+                { label: "Using Rubeus", page: "pages/ad-as-rep-roasting-rubeus.html" }
+              ]
+            },
+            {
+              id: "ad-kerberoasting",
+              label: "Kerberoasting",
+              page: "pages/ad-kerberoasting.html",
+              children: [
+                { label: "Using Rubeus", page: "pages/ad-kerberoasting-rubeus.html" },
+                { label: "Using impacket-GetUserSPNs", page: "pages/ad-kerberoasting-getuserspns.html" }
+              ]
+            },
+            {
+              id: "ad-silver-tickets",
+              label: "Silver Tickets",
+              page: "pages/ad-silver-tickets.html",
+              children: [
+                { label: "Flow Use Mimikatz", page: "pages/ad-silver-tickets-mimikatz.html" }
+              ]
+            },
+            {
+              id: "ad-dcsync",
+              label: "DCSync",
+              page: "pages/ad-dcsync.html",
+              children: [
+                { label: "Using Mimikatz", page: "pages/ad-dcsync-mimikatz.html" },
+                { label: "Using impacket-secretsdump", page: "pages/ad-dcsync-secretsdump.html" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "linux",
+      label: "Linux Commands",
+      phase: "Post-Exploitation",
+      icon: "icons/linux-icon.png",
+      page: "pages/linux-commands.html",
+      tabs: [
+        {
+          id: "linux-info-resource",
+          label: "Information Resource",
+          shortLabel: "INFO",
+          phase: "Resources",
+          page: "pages/linux-information-resource.html"
+        },
+        {
+          id: "linux-enum",
+          label: "Enumeration",
+          shortLabel: "ENUM",
+          phase: "Enumeration",
+          page: "pages/linux-enumeration.html"
+        }
+      ]
+    },
+    {
+      id: "windows",
+      label: "Windows",
+      phase: "Post-Exploitation",
+      icon: "icons/windows-icon.png",
+      page: "pages/windows.html",
+      tabs: [
+        {
+          id: "windows-info-resource",
+          label: "Information Resource",
+          shortLabel: "INFO",
+          phase: "Resources",
+          page: "pages/windows-information-resource.html"
+        },
+        {
+          id: "windows-enum",
+          label: "Enumeration",
+          shortLabel: "ENUM",
+          phase: "Enumeration",
+          page: "pages/windows-enumeration.html"
+        }
       ]
     }
   ];
 
   const singleTabs = [
     { label: "Reverse Shell", phase: "Payloads", page: "pages/reverse-shells.html", icon: "icons/reverse-shell-icon.png" },
-    { label: "Linux Commands", phase: "Post-Exploitation", page: "pages/linux-commands.html", icon: "icons/linux-icon.png" },
     { label: "Notes", phase: "Workspace", page: "pages/notes.html", icon: "icons/notes-icon.png" }
   ];
 
   const pageMeta = {
     "pages/reconnaissance.html": { section: "Discovery", phase: "Field Kit", label: "Reconnaissance" },
+    "pages/recon-intelligence-gathering.html": { section: "Reconnaissance", phase: "Overview", label: "Reconnaissance" },
     "pages/recon-osint-dorking.html": { section: "Reconnaissance", phase: "OSINT", label: "Dorking" },
     "pages/recon-osint-github.html": { section: "Reconnaissance", phase: "OSINT", label: "GitHub Search" },
     "pages/recon-osint-emails.html": { section: "Reconnaissance", phase: "OSINT", label: "Emails" },
@@ -83,14 +213,53 @@
     "pages/recon-svc-smtp.html": { section: "Reconnaissance", phase: "Service Enumeration", label: "SMTP" },
     "pages/recon-svc-ftp.html": { section: "Reconnaissance", phase: "Service Enumeration", label: "FTP" },
     "pages/recon-svc-http.html": { section: "Reconnaissance", phase: "Service Enumeration", label: "HTTP" },
-    "pages/web-vuln.html": { section: "Exploitation", phase: "Web Vulnerabilities", label: "Web Vuln" },
-    "pages/web-lfi.html": { section: "Web Vuln", phase: "File Inclusion", label: "LFI" },
-    "pages/web-sqli.html": { section: "Web Vuln", phase: "Injection", label: "SQL Injection" },
-    "pages/web-xss.html": { section: "Web Vuln", phase: "Client-Side", label: "XSS" }
+    "pages/web-vuln.html": { section: "Exploitation", phase: "Web Testing", label: "Web Testing" },
+    "pages/web-lfi.html": { section: "Web Testing", phase: "File Inclusion", label: "LFI" },
+    "pages/web-sqli.html": { section: "Web Testing", phase: "Injection", label: "SQL Injection" },
+    "pages/web-xss.html": { section: "Web Testing", phase: "Client-Side", label: "XSS" },
+    "pages/active-directory.html": { section: "Active Directory", phase: "Overview", label: "Active Directory" },
+    "pages/ad-information-resource.html": { section: "Active Directory", phase: "Resources", label: "Information Resource" },
+    "pages/ad-authentication-method.html": { section: "Active Directory", phase: "Authentication", label: "Authentication Method" },
+    "pages/ad-authentication-ntlm.html": { section: "Active Directory", phase: "Authentication", label: "NTLM" },
+    "pages/ad-authentication-kerberos.html": { section: "Active Directory", phase: "Authentication", label: "Kerberos" },
+    "pages/ad-enumeration.html": { section: "Active Directory", phase: "Enumeration", label: "Enumeration" },
+    "pages/ad-authentication-attacks.html": { section: "Active Directory", phase: "Authentication", label: "Authentication Attacks" },
+    "pages/ad-password-spraying.html": { section: "Active Directory", phase: "Authentication Attacks", label: "Password Spraying" },
+    "pages/ad-spray-passwords-ps1.html": { section: "Active Directory", phase: "Password Spraying", label: "Using Spray-Passwords.ps1" },
+    "pages/ad-password-spraying-netexec.html": { section: "Active Directory", phase: "Password Spraying", label: "Using NetExec" },
+    "pages/ad-password-spraying-kerbrute.html": { section: "Active Directory", phase: "Password Spraying", label: "Using Kerbrute" },
+    "pages/ad-as-rep-roasting.html": { section: "Active Directory", phase: "Authentication Attacks", label: "AS-REP Roasting" },
+    "pages/ad-as-rep-roasting-getnpusers.html": { section: "Active Directory", phase: "AS-REP Roasting", label: "Using impacket-GetNPUsers" },
+    "pages/ad-as-rep-roasting-rubeus.html": { section: "Active Directory", phase: "AS-REP Roasting", label: "Using Rubeus" },
+    "pages/ad-kerberoasting.html": { section: "Active Directory", phase: "Authentication Attacks", label: "Kerberoasting" },
+    "pages/ad-kerberoasting-rubeus.html": { section: "Active Directory", phase: "Kerberoasting", label: "Using Rubeus" },
+    "pages/ad-kerberoasting-getuserspns.html": { section: "Active Directory", phase: "Kerberoasting", label: "Using impacket-GetUserSPNs" },
+    "pages/ad-silver-tickets.html": { section: "Active Directory", phase: "Authentication Attacks", label: "Silver Tickets" },
+    "pages/ad-silver-tickets-mimikatz.html": { section: "Active Directory", phase: "Silver Tickets", label: "Flow Use Mimikatz" },
+    "pages/ad-dcsync.html": { section: "Active Directory", phase: "Authentication Attacks", label: "DCSync" },
+    "pages/ad-dcsync-mimikatz.html": { section: "Active Directory", phase: "DCSync", label: "Using Mimikatz" },
+    "pages/ad-dcsync-secretsdump.html": { section: "Active Directory", phase: "DCSync", label: "Using impacket-secretsdump" },
+    "pages/linux-commands.html": { section: "Linux Commands", phase: "Overview", label: "Linux Commands" },
+    "pages/linux-information-resource.html": { section: "Linux Commands", phase: "Resources", label: "Information Resource" },
+    "pages/linux-enumeration.html": { section: "Linux Commands", phase: "Enumeration", label: "Enumeration" },
+    "pages/windows.html": { section: "Windows", phase: "Overview", label: "Windows" },
+    "pages/windows-information-resource.html": { section: "Windows", phase: "Resources", label: "Information Resource" },
+    "pages/windows-enumeration.html": { section: "Windows", phase: "Enumeration", label: "Enumeration" }
   };
+
+  const primaryGroups = groups.filter((group) => !["linux", "ad", "windows"].includes(group.id));
+  const secondaryGroups = ["linux", "windows", "ad"]
+    .map((id) => groups.find((group) => group.id === id))
+    .filter(Boolean);
 
   const navIconClass = "block h-[29px] w-[29px] object-contain";
   const subIconClass = "block h-[21px] w-[21px] object-contain";
+
+  function navIconFor(item) {
+    return item.label === "Active Directory"
+      ? "block h-[35px] w-[35px] scale-110 object-contain"
+      : navIconClass;
+  }
 
   function navButtonClass(isActive) {
     return [
@@ -113,14 +282,14 @@
     ].join(" ");
   }
 
-  function getActiveMeta() {
-    if (pageMeta[activePage]) {
-      return pageMeta[activePage];
+  function getActiveMeta(pagePath) {
+    if (pageMeta[pagePath]) {
+      return pageMeta[pagePath];
     }
 
     for (const group of groups) {
       for (const tab of group.tabs) {
-        if (tab.page === activePage) {
+        if (tab.page === pagePath) {
           return {
             section: group.label,
             phase: tab.phase ?? group.phase,
@@ -128,19 +297,21 @@
           };
         }
 
-        const child = tab.children?.find((item) => item.page === activePage);
+        const child = tab.children?.find((item) => item.page === pagePath || item.children?.some((nestedItem) => nestedItem.page === pagePath));
 
         if (child) {
+          const nestedItem = child.children?.find((item) => item.page === pagePath);
+
           return {
             section: group.label,
-            phase: child.phase ?? tab.phase ?? group.phase,
-            label: child.label
+            phase: nestedItem ? child.label : child.phase ?? tab.phase ?? group.phase,
+            label: nestedItem?.label ?? child.label
           };
         }
       }
     }
 
-    const singleTab = singleTabs.find((tab) => tab.page === activePage || tab.matchPages?.includes(activePage));
+    const singleTab = singleTabs.find((tab) => tab.page === pagePath || tab.matchPages?.includes(pagePath));
 
     if (singleTab) {
       return {
@@ -158,8 +329,9 @@
   }
 
   let openGroup = "recon";
-  let openNested = "osint";
-  let activePage = "pages/recon-osint-dorking.html";
+  let openNested = null;
+  let openDeepNested = null;
+  let activePage = "pages/recon-intelligence-gathering.html";
   let pageHtml = "";
   let rsState = {
     ip: "192.168.45.166",
@@ -167,6 +339,7 @@
   };
 
   $: activeOpenGroup = groups.find((group) => group.id === openGroup);
+  $: activeMeta = getActiveMeta(activePage);
 
   onMount(() => {
     const closeOnOutsideClick = (event) => {
@@ -195,23 +368,27 @@
       const parsedState = JSON.parse(savedState);
       openGroup = parsedState.openGroup ?? openGroup;
       openNested = parsedState.openNested ?? openNested;
+      openDeepNested = parsedState.openDeepNested ?? openDeepNested;
       activePage = parsedState.activePage ?? activePage;
 
       if (activePage?.startsWith("pages/rs-")) {
         openGroup = null;
         openNested = null;
+        openDeepNested = null;
         activePage = "pages/reverse-shells.html";
       }
 
       if (activePage === "pages/reconnaissance.html") {
-        openGroup = null;
+        openGroup = "recon";
         openNested = null;
-        activePage = "pages/recon-osint-dorking.html";
+        openDeepNested = null;
+        activePage = "pages/recon-intelligence-gathering.html";
       }
 
       if (activePage === "pages/web-vuln.html") {
         openGroup = null;
         openNested = null;
+        openDeepNested = null;
         activePage = "pages/web-lfi.html";
       }
     } catch {
@@ -225,6 +402,7 @@
       JSON.stringify({
         openGroup,
         openNested,
+        openDeepNested,
         activePage
       })
     );
@@ -243,30 +421,74 @@
   function toggleGroup(groupId) {
     openGroup = openGroup === groupId ? null : groupId;
     openNested = null;
+    openDeepNested = null;
+    saveState();
+  }
+
+  async function selectGroup(group) {
+    openGroup = group.id;
+    openNested = null;
+    openDeepNested = null;
+
+    if (group.page) {
+      await loadPage(group.page);
+      return;
+    }
+
     saveState();
   }
 
   async function selectSubTab(groupId, pagePath) {
     openGroup = groupId;
     openNested = null;
+    openDeepNested = null;
     await loadPage(pagePath);
   }
 
-  function toggleNestedTab(groupId, tabId) {
+  async function toggleNestedTab(groupId, tabId, pagePath) {
     openGroup = groupId;
     openNested = openNested === tabId ? null : tabId;
+    openDeepNested = null;
+
+    if (pagePath) {
+      await loadPage(pagePath);
+      return;
+    }
+
     saveState();
   }
 
   async function selectNestedSubTab(groupId, tabId, pagePath) {
     openGroup = groupId;
     openNested = tabId;
+    openDeepNested = null;
+    await loadPage(pagePath);
+  }
+
+  async function toggleDeepNestedTab(groupId, tabId, childId, pagePath) {
+    openGroup = groupId;
+    openNested = tabId;
+    openDeepNested = openDeepNested === childId ? null : childId;
+
+    if (pagePath) {
+      await loadPage(pagePath);
+      return;
+    }
+
+    saveState();
+  }
+
+  async function selectDeepNestedSubTab(groupId, tabId, childId, pagePath) {
+    openGroup = groupId;
+    openNested = tabId;
+    openDeepNested = childId;
     await loadPage(pagePath);
   }
 
   async function selectSingleTab(pagePath) {
     openGroup = null;
     openNested = null;
+    openDeepNested = null;
     await loadPage(pagePath);
   }
 
@@ -275,11 +497,11 @@
   }
 
   function isGroupActive(group) {
-    return group.tabs.some((tab) => isTabActive(tab));
+    return group.page === activePage || group.tabs.some((tab) => isTabActive(tab));
   }
 
   function isTabActive(tab) {
-    return tab.page === activePage || tab.children?.some((child) => child.page === activePage);
+    return tab.page === activePage || tab.children?.some((child) => child.page === activePage || child.children?.some((item) => item.page === activePage));
   }
 
   function getPayloadText(button) {
@@ -435,6 +657,37 @@
       });
   }
 
+  function closeImagePreview() {
+    document.querySelector(".image-preview")?.remove();
+    document.removeEventListener("keydown", closeImagePreviewOnEscape);
+  }
+
+  function closeImagePreviewOnEscape(event) {
+    if (event.key === "Escape") {
+      closeImagePreview();
+    }
+  }
+
+  function openImagePreview(image) {
+    closeImagePreview();
+
+    const preview = document.createElement("div");
+    preview.className = "image-preview";
+    preview.innerHTML = `
+      <button class="image-preview-close" type="button" aria-label="Close image preview">x</button>
+      <img src="${image.src}" alt="${image.alt || ""}">
+    `;
+
+    preview.addEventListener("click", (event) => {
+      if (event.target === preview || event.target.closest(".image-preview-close")) {
+        closeImagePreview();
+      }
+    });
+
+    document.body.appendChild(preview);
+    document.addEventListener("keydown", closeImagePreviewOnEscape);
+  }
+
   function bindPageControls() {
     const notesArea = document.querySelector("#notesText");
     const downloadNotesButton = document.querySelector("#downloadNotes");
@@ -510,29 +763,34 @@
       button.addEventListener("click", async () => {
         openGroup = null;
         openNested = null;
+        openDeepNested = null;
         await loadPage(button.dataset.pageLink);
       });
+    });
+
+    document.querySelectorAll(".content-image img").forEach((image) => {
+      image.addEventListener("click", () => openImagePreview(image));
     });
   }
 </script>
 
 <div class="app" data-theme="oscp">
   <aside class="sidebar-rail">
-    {#each groups as group}
+    {#each primaryGroups as group}
       <div class="tooltip tooltip-right" data-tip={group.label}>
         <button
           class="sidebar-main-tab"
-          class:active={openGroup === group.id || isGroupActive(group)}
+          class:active={openGroup === group.id}
           aria-label={group.label}
           type="button"
-          onclick={() => toggleGroup(group.id)}
+          onclick={() => selectGroup(group)}
         >
-          <img class={navIconClass} src={group.icon} alt="">
+          <img class={navIconFor(group)} src={group.icon} alt="">
         </button>
       </div>
     {/each}
 
-    {#each singleTabs as tab}
+    {#each singleTabs.slice(0, 1) as tab}
       <div class="tooltip tooltip-right" data-tip={tab.label}>
         <button
           class="sidebar-main-tab"
@@ -541,7 +799,35 @@
           type="button"
           onclick={() => selectSingleTab(tab.page)}
         >
-          <img class={navIconClass} src={tab.icon} alt="">
+          <img class={navIconFor(tab)} src={tab.icon} alt="">
+        </button>
+      </div>
+    {/each}
+
+    {#each secondaryGroups as group}
+      <div class="tooltip tooltip-right" data-tip={group.label}>
+        <button
+          class="sidebar-main-tab"
+          class:active={openGroup === group.id}
+          aria-label={group.label}
+          type="button"
+          onclick={() => selectGroup(group)}
+        >
+          <img class={navIconFor(group)} src={group.icon} alt="">
+        </button>
+      </div>
+    {/each}
+
+    {#each singleTabs.slice(1) as tab}
+      <div class="tooltip tooltip-right" data-tip={tab.label}>
+        <button
+          class="sidebar-main-tab"
+          class:active={isSingleTabActive(tab)}
+          aria-label={tab.label}
+          type="button"
+          onclick={() => selectSingleTab(tab.page)}
+        >
+          <img class={navIconFor(tab)} src={tab.icon} alt="">
         </button>
       </div>
     {/each}
@@ -560,7 +846,7 @@
               class="sidebar-subtab"
               class:active={isTabActive(tab)}
               type="button"
-              onclick={() => tab.children ? toggleNestedTab(activeOpenGroup.id, tab.id) : selectSubTab(activeOpenGroup.id, tab.page)}
+              onclick={() => tab.children ? toggleNestedTab(activeOpenGroup.id, tab.id, tab.page) : selectSubTab(activeOpenGroup.id, tab.page)}
             >
               {tab.label}
             </button>
@@ -570,12 +856,27 @@
                 {#each tab.children as child}
                   <button
                     class="sidebar-child-tab"
-                    class:active={activePage === child.page}
+                    class:active={activePage === child.page || child.children?.some((item) => item.page === activePage)}
                     type="button"
-                    onclick={() => selectNestedSubTab(activeOpenGroup.id, tab.id, child.page)}
+                    onclick={() => child.children ? toggleDeepNestedTab(activeOpenGroup.id, tab.id, child.id, child.page) : selectNestedSubTab(activeOpenGroup.id, tab.id, child.page)}
                   >
                     {child.label}
                   </button>
+
+                  {#if child.children && openDeepNested === child.id}
+                    <div class="sidebar-grandchild-tabs">
+                      {#each child.children as item}
+                        <button
+                          class="sidebar-grandchild-tab"
+                          class:active={activePage === item.page}
+                          type="button"
+                          onclick={() => selectDeepNestedSubTab(activeOpenGroup.id, tab.id, child.id, item.page)}
+                        >
+                          {item.label}
+                        </button>
+                      {/each}
+                    </div>
+                  {/if}
                 {/each}
               </div>
             {/if}
@@ -588,16 +889,16 @@
   <main class="flex min-w-0 flex-1 flex-col bg-base-200">
     <header class="flex h-[58px] shrink-0 items-center justify-between border-b border-primary/15 bg-[#111214] px-5">
       <div class="min-w-0">
-        <div class="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">Red Team Field Kit</div>
+        <div class="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">Red Team Notes</div>
         <div class="mt-1 flex items-center gap-2 text-sm text-base-content">
-          <span class="truncate font-semibold">{getActiveMeta().label}</span>
+          <span class="truncate font-semibold">{activeMeta.label}</span>
           <span class="h-1 w-1 rounded-full bg-primary"></span>
-          <span class="truncate text-xs text-base-content/60">{getActiveMeta().phase}</span>
+          <span class="truncate text-xs text-base-content/60">{activeMeta.phase}</span>
         </div>
       </div>
 
       <div class="badge badge-outline border-primary/35 px-3 text-[10px] uppercase tracking-[0.18em] text-primary">
-        {getActiveMeta().section}
+        {activeMeta.section}
       </div>
     </header>
 

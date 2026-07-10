@@ -1,0 +1,124 @@
+<section class="page active prose-page">
+  <h1>NTLM</h1>
+  <p class="intro">
+    NTLM is Microsoft's legacy authentication protocol used to verify the identity of users and computers within
+    Windows environments. It performs a challenge-response authentication process without transmitting the user's
+    password over the network. Although largely replaced by Kerberos in Active Directory domains, NTLM is still
+    supported for compatibility with legacy systems and specific authentication scenarios.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Objectives</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Authenticate users without sending plaintext passwords.</li>
+    <li>Support authentication for legacy systems and applications.</li>
+    <li>Provide fallback authentication when Kerberos is unavailable.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Authentication Process</h2>
+    <span></span>
+  </div>
+
+  <ol class="content-list">
+    <li>The client requests authentication.</li>
+    <li>The server generates and sends a random challenge (nonce).</li>
+    <li>The client encrypts the challenge using a value derived from the user's NT password hash.</li>
+    <li>The server forwards the response to the Domain Controller, or validates it locally for local accounts.</li>
+    <li>The Domain Controller verifies the response using the stored NT hash.</li>
+    <li>If the values match, authentication succeeds.</li>
+  </ol>
+  <figure class="content-image content-image-md">
+    <img src="images/ntlm-authentication-process.png" alt="NTLM authentication process">
+  </figure>
+
+  <div class="section-title">
+    <span></span>
+    <h2>NTLM Versions</h2>
+    <span></span>
+  </div>
+
+  <h3>LM (LAN Manager)</h3>
+  <ul class="content-list">
+    <li>Original authentication protocol.</li>
+    <li>Weak cryptography.</li>
+    <li>Considered obsolete and insecure.</li>
+  </ul>
+
+  <h3>NTLM</h3>
+  <ul class="content-list">
+    <li>Improved over LM.</li>
+    <li>Uses the NT password hash.</li>
+    <li>No mutual authentication.</li>
+  </ul>
+
+  <h3>NTLMv2</h3>
+  <ul class="content-list">
+    <li>Current and most secure NTLM version.</li>
+    <li>Uses stronger cryptographic mechanisms.</li>
+    <li>Includes client and server challenges to improve security.</li>
+    <li>Still less secure than Kerberos.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Common Use Cases</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Legacy Windows applications.</li>
+    <li>Standalone, non-domain systems.</li>
+    <li>Cross-domain authentication without trust relationships.</li>
+    <li>Fallback when Kerberos authentication fails.</li>
+    <li>Accessing resources by IP address instead of hostname.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Limitations</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Provides no native mutual authentication.</li>
+    <li>Relies on password hashes.</li>
+    <li>More vulnerable to credential relay attacks than Kerberos.</li>
+    <li>Less efficient and less secure than Kerberos.</li>
+    <li>Does not support modern delegation features.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Common Attacks</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Pass-the-Hash (PtH)</li>
+    <li>NTLM Relay</li>
+    <li>Credential Capture</li>
+    <li>Brute Force / Password Spraying</li>
+    <li>SMB Relay attacks</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Best Practices</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Prefer Kerberos whenever possible.</li>
+    <li>Disable LM and NTLMv1.</li>
+    <li>Restrict or disable NTLM where legacy compatibility is not required.</li>
+    <li>Enable SMB signing and Extended Protection where applicable.</li>
+    <li>Monitor and audit NTLM authentication events.</li>
+    <li>Enforce strong password policies and Multi-Factor Authentication (MFA) where possible.</li>
+  </ul>
+</section>

