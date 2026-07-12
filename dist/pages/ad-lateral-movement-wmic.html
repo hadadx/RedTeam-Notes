@@ -1,0 +1,21 @@
+<section class="page active prose-page">
+  <h1>wmic.exe</h1>
+
+  <p class="intro">
+    Legacy Windows command-line utility for interacting with Windows Management Instrumentation (WMI). It was commonly
+    used to query system information and perform local or remote administrative tasks, including process execution.
+    wmic.exe was deprecated and disabled by default starting in Windows 11 (2024) and has been replaced by PowerShell
+    CIM cmdlets (e.g., Get-CimInstance, Invoke-CimMethod, New-CimSession).
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Execute Command On The Target</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">wmic /node:192.168.50.73 /user:jen /password:Nexus123! process call create "calc"</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

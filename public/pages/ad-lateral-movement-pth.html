@@ -1,0 +1,53 @@
+<section class="page active prose-page">
+  <h1>Pass-the-Hash (PtH)</h1>
+
+  <p class="intro">
+    Pass-the-Hash (PtH) is an authentication technique that allows an adversary to authenticate to remote systems using
+    an NTLM password hash instead of the user's plaintext password. By abusing the NTLM authentication protocol,
+    attackers can move laterally, execute remote commands, and access network resources without cracking the hash.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>A valid NTLM hash of the target account.</li>
+    <li>The target must support NTLM authentication.</li>
+    <li>Valid account with remote access privileges.</li>
+    <li>Administrative privileges on the target for remote execution methods (e.g., PsExec, WMI, SMB, WinRM).</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    No need to crack the password. Fast and effective for lateral movement. Uses legitimate NTLM authentication.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Only works against NTLM, not pure Kerberos authentication. Authentication attempts and remote execution can be
+    logged and detected.
+  </p>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1550/002/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1550.002</a>
+  </div>
+</section>

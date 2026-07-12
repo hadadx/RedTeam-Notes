@@ -1,0 +1,36 @@
+<section class="page active prose-page">
+  <h1>Windows Remote Management (WinRM)</h1>
+
+  <p class="intro">
+    Windows Remote Management (WinRM) is Microsoft's implementation of the WS-Management (WS-Man) protocol, providing a
+    built-in framework for remote Windows administration. It enables authenticated users to execute commands, manage
+    Windows components, modify the registry and services, and establish PowerShell Remoting sessions over HTTP (TCP
+    5985) or HTTPS (TCP 5986). WinRM is commonly accessed through WinRS or PowerShell and is frequently used for
+    legitimate administration and lateral movement.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Valid local or domain credentials.</li>
+    <li>Membership in the Administrators or Remote Management Users group on the target host.</li>
+    <li>The Windows Remote Management (WinRM) service must be running and configured.</li>
+    <li>Network connectivity to the target.</li>
+    <li>Required ports must be accessible: TCP 5985 (HTTP) or TCP 5986 (HTTPS).</li>
+    <li>Firewall rules must allow WinRM traffic.</li>
+  </ul>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1021/006/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1021.006</a>
+  </div>
+</section>

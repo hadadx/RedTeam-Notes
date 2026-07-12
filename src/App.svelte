@@ -143,6 +143,39 @@
               ]
             }
           ]
+        },
+        {
+          id: "ad-lateral-movement",
+          label: "Lateral Movement",
+          shortLabel: "MOVE",
+          phase: "Movement",
+          page: "pages/ad-lateral-movement.html",
+          children: [
+            {
+              label: "WMI",
+              page: "pages/ad-lateral-movement-wmi.html",
+              children: [
+                { label: "wmic.exe", page: "pages/ad-lateral-movement-wmic.html" },
+                { label: "CIM", page: "pages/ad-lateral-movement-cim-ps.html" }
+              ]
+            },
+            {
+              label: "WinRM",
+              page: "pages/ad-lateral-movement-winrm.html",
+              children: [
+                { label: "winrs.exe", page: "pages/ad-lateral-movement-winrs.html" },
+                { label: "PSSession", page: "pages/ad-lateral-movement-pssession.html" }
+              ]
+            },
+            { label: "PsExec", page: "pages/ad-lateral-movement-psexec.html" },
+            {
+              label: "PtH",
+              page: "pages/ad-lateral-movement-pth.html",
+              children: [
+                { label: "impacket-wmiexec", page: "pages/ad-lateral-movement-pth-wmiexec.html" }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -223,6 +256,7 @@
     "pages/ad-authentication-ntlm.html": { section: "Active Directory", phase: "Authentication", label: "NTLM" },
     "pages/ad-authentication-kerberos.html": { section: "Active Directory", phase: "Authentication", label: "Kerberos" },
     "pages/ad-enumeration.html": { section: "Active Directory", phase: "Enumeration", label: "Enumeration" },
+    "pages/ad-lateral-movement.html": { section: "Active Directory", phase: "Movement", label: "Lateral Movement" },
     "pages/ad-authentication-attacks.html": { section: "Active Directory", phase: "Authentication", label: "Authentication Attacks" },
     "pages/ad-password-spraying.html": { section: "Active Directory", phase: "Authentication Attacks", label: "Password Spraying" },
     "pages/ad-spray-passwords-ps1.html": { section: "Active Directory", phase: "Password Spraying", label: "Using Spray-Passwords.ps1" },
@@ -239,6 +273,15 @@
     "pages/ad-dcsync.html": { section: "Active Directory", phase: "Authentication Attacks", label: "DCSync" },
     "pages/ad-dcsync-mimikatz.html": { section: "Active Directory", phase: "DCSync", label: "Using Mimikatz" },
     "pages/ad-dcsync-secretsdump.html": { section: "Active Directory", phase: "DCSync", label: "Using impacket-secretsdump" },
+    "pages/ad-lateral-movement-wmi.html": { section: "Active Directory", phase: "Lateral Movement", label: "WMI" },
+    "pages/ad-lateral-movement-wmic.html": { section: "Active Directory", phase: "WMI", label: "wmic.exe" },
+    "pages/ad-lateral-movement-cim-ps.html": { section: "Active Directory", phase: "WMI", label: "CIM" },
+    "pages/ad-lateral-movement-winrm.html": { section: "Active Directory", phase: "Lateral Movement", label: "WinRM" },
+    "pages/ad-lateral-movement-winrs.html": { section: "Active Directory", phase: "WinRM", label: "winrs.exe" },
+    "pages/ad-lateral-movement-pssession.html": { section: "Active Directory", phase: "WinRM", label: "PSSession" },
+    "pages/ad-lateral-movement-psexec.html": { section: "Active Directory", phase: "Lateral Movement", label: "PsExec" },
+    "pages/ad-lateral-movement-pth.html": { section: "Active Directory", phase: "Lateral Movement", label: "PtH" },
+    "pages/ad-lateral-movement-pth-wmiexec.html": { section: "Active Directory", phase: "PtH", label: "impacket-wmiexec" },
     "pages/linux-commands.html": { section: "Linux Commands", phase: "Overview", label: "Linux Commands" },
     "pages/linux-information-resource.html": { section: "Linux Commands", phase: "Resources", label: "Information Resource" },
     "pages/linux-enumeration.html": { section: "Linux Commands", phase: "Enumeration", label: "Enumeration" },
@@ -259,6 +302,10 @@
     return item.label === "Active Directory"
       ? "block h-[35px] w-[35px] scale-110 object-contain"
       : navIconClass;
+  }
+
+  function getNavId(item) {
+    return item.id ?? item.page ?? item.label;
   }
 
   function navButtonClass(isActive) {
@@ -858,19 +905,19 @@
                     class="sidebar-child-tab"
                     class:active={activePage === child.page || child.children?.some((item) => item.page === activePage)}
                     type="button"
-                    onclick={() => child.children ? toggleDeepNestedTab(activeOpenGroup.id, tab.id, child.id, child.page) : selectNestedSubTab(activeOpenGroup.id, tab.id, child.page)}
+                    onclick={() => child.children ? toggleDeepNestedTab(activeOpenGroup.id, tab.id, getNavId(child), child.page) : selectNestedSubTab(activeOpenGroup.id, tab.id, child.page)}
                   >
                     {child.label}
                   </button>
 
-                  {#if child.children && openDeepNested === child.id}
+                  {#if child.children && openDeepNested === getNavId(child)}
                     <div class="sidebar-grandchild-tabs">
                       {#each child.children as item}
                         <button
                           class="sidebar-grandchild-tab"
                           class:active={activePage === item.page}
                           type="button"
-                          onclick={() => selectDeepNestedSubTab(activeOpenGroup.id, tab.id, child.id, item.page)}
+                          onclick={() => selectDeepNestedSubTab(activeOpenGroup.id, tab.id, getNavId(child), item.page)}
                         >
                           {item.label}
                         </button>

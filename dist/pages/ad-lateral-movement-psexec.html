@@ -1,0 +1,33 @@
+<section class="page active prose-page">
+  <h1>PsExec</h1>
+
+  <p class="intro">
+    PsExec is a Sysinternals command-line utility that enables remote process execution over SMB. It provides an
+    interactive shell on a remote Windows system by copying psexesvc.exe to the target, creating a temporary Windows
+    service, and executing the specified command or process. PsExec is widely used for legitimate administration and is a
+    common technique for lateral movement.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Membership in the Administrators group on the target host.</li>
+    <li>The ADMIN$ administrative share must be accessible.</li>
+    <li>File and Printer Sharing must be enabled.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>CMD Session On The Target</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">.\PsExec64.exe -i  \\FILES04 -u corp\jen -p Nexus123! cmd</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

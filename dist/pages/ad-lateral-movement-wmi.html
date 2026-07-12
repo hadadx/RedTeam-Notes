@@ -1,0 +1,40 @@
+<section class="page active prose-page">
+  <h1>WMI (Windows Management Instrumentation)</h1>
+
+  <p class="intro">
+    Windows Management Instrumentation (WMI) is a built-in Windows management infrastructure that provides a
+    standardized interface for local and remote system administration. It enables administrators and applications to
+    query system information, manage Windows components, and execute commands or payloads. Remote WMI operates over
+    DCOM/RPC (TCP 135 + dynamic ports) or WinRM (TCP 5985/5986). Although wmic.exe was deprecated and disabled by
+    default starting in Windows 11 (2024), WMI remains fully supported and is primarily accessed through PowerShell
+    (CIM cmdlets) or COM APIs.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Valid local or domain credentials.</li>
+    <li>
+      Membership in the Administrators group on the target host (Local Administrators). A Domain Admin also satisfies
+      this requirement by default.
+    </li>
+    <li>The Windows Management Instrumentation (Winmgmt) service must be running.</li>
+    <li>Network connectivity to the target.</li>
+    <li>Required ports must be accessible: TCP 135 + dynamic RPC ports (DCOM/RPC), or TCP 5985/5986 when using WMI over WinRM.</li>
+    <li>Firewall rules must allow WMI/DCOM or WinRM traffic.</li>
+  </ul>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1047/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1047</a>
+  </div>
+</section>

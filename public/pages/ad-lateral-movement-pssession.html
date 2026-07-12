@@ -1,0 +1,76 @@
+<section class="page active prose-page">
+  <h1>PSSession</h1>
+
+  <p class="intro">
+    A PowerShell Session (PSSession) is a persistent remote PowerShell connection established over Windows Remote
+    Management (WinRM). It allows authenticated users to execute commands, run scripts, and manage remote systems within
+    an interactive or reusable session. PSSessions are commonly created using New-PSSession and accessed with
+    Enter-PSSession or Invoke-Command.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Create Remote Session</h2>
+    <span></span>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Define User Credentials</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$username = 'jen';</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$password = 'Nexus123!';</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Convert Password To SecureString</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$secureString = ConvertTo-SecureString $password -AsPlaintext -Force;</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Create PSCredential Object</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$credential = New-Object System.Management.Automation.PSCredential $username, $secureString;</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Create PSSession</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">New-PSSession -ComputerName &lt;target ip&gt; -Credential $credential</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Use The Session</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">Enter-PSSession 1</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>
