@@ -1,0 +1,58 @@
+<section class="page active prose-page">
+  <h1>Pass-the-Ticket (PtT)</h1>
+
+  <p class="intro">
+    Pass-the-Ticket is a lateral movement technique that steals existing Kerberos tickets (TGT or TGS) from memory and
+    re-injects them into another session to impersonate a user and access resources. Instead of building a ticket from a
+    hash, the attacker reuses tickets that already exist in LSASS memory. A stolen TGS grants access to one specific
+    service, while a stolen TGT can be reused across systems to request new service tickets within its lifetime (~10
+    hours). A key benefit: if the tickets belong to the current user, no administrative privileges are needed to inject
+    and use them.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Access to a system where the target user's Kerberos tickets are cached in memory.</li>
+    <li>A tool to export and inject tickets (e.g., Mimikatz sekurlsa::tickets /export and kerberos::ptt).</li>
+    <li>For a TGS: the specific service ticket (SPN) matching the resource you want to reach.</li>
+    <li>Administrative privileges to extract other users' tickets from memory (not required when reusing your own current user's tickets).</li>
+    <li>A Kerberos-enabled domain environment.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    No password or hash needed, reuses existing tickets. No admin rights required for your own current user's tickets.
+    Blends in with normal Kerberos traffic. A stolen TGT can be reused across systems to request more service tickets.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires the target's tickets to already be in memory. A TGS only works for its specific service (SPN). Tickets are
+    time-limited and expire. Extracting other users' tickets needs admin privileges.
+  </p>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1550/003/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1550.003</a>
+  </div>
+</section>

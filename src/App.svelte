@@ -19,10 +19,7 @@
           phase: "OSINT",
           icon: "icons/osint-icon.png",
           children: [
-            { label: "Dorking", page: "pages/recon-osint-dorking.html" },
-            { label: "GitHub Search", page: "pages/recon-osint-github.html" },
-            { label: "Emails", page: "pages/recon-osint-emails.html" },
-            { label: "Breaches", page: "pages/recon-osint-breaches.html" }
+            { label: "Dorking", page: "pages/recon-osint-dorking.html" }
           ]
         },
         {
@@ -174,7 +171,33 @@
               children: [
                 { label: "impacket-wmiexec", page: "pages/ad-lateral-movement-pth-wmiexec.html" }
               ]
-            }
+            },
+            {
+              label: "OtH",
+              page: "pages/ad-lateral-movement-oth.html",
+              children: [
+                { label: "mimikatz + psexec", page: "pages/ad-lateral-movement-oth-mimikatz-psexec.html" }
+              ]
+            },
+            {
+              label: "PtT",
+              page: "pages/ad-lateral-movement-ptt.html",
+              children: [
+                { label: "mimikatz", page: "pages/ad-lateral-movement-ptt-mimikatz.html" }
+              ]
+            },
+            { label: "DCOM", page: "pages/ad-lateral-movement-dcom.html" }
+          ]
+        },
+        {
+          id: "ad-persistence",
+          label: "Persistence",
+          shortLabel: "PERS",
+          phase: "Persistence",
+          page: "pages/ad-persistence.html",
+          children: [
+            { label: "Golden Ticket", page: "pages/ad-persistence-golden-ticket.html" },
+            { label: "Shadow Copy", page: "pages/ad-persistence-shadow-copy.html" }
           ]
         }
       ]
@@ -282,6 +305,14 @@
     "pages/ad-lateral-movement-psexec.html": { section: "Active Directory", phase: "Lateral Movement", label: "PsExec" },
     "pages/ad-lateral-movement-pth.html": { section: "Active Directory", phase: "Lateral Movement", label: "PtH" },
     "pages/ad-lateral-movement-pth-wmiexec.html": { section: "Active Directory", phase: "PtH", label: "impacket-wmiexec" },
+    "pages/ad-lateral-movement-oth.html": { section: "Active Directory", phase: "Lateral Movement", label: "Overpass-the-Hash" },
+    "pages/ad-lateral-movement-oth-mimikatz-psexec.html": { section: "Active Directory", phase: "Overpass-the-Hash", label: "mimikatz + psexec" },
+    "pages/ad-lateral-movement-ptt.html": { section: "Active Directory", phase: "Lateral Movement", label: "Pass-the-Ticket" },
+    "pages/ad-lateral-movement-ptt-mimikatz.html": { section: "Active Directory", phase: "Pass-the-Ticket", label: "mimikatz" },
+    "pages/ad-lateral-movement-dcom.html": { section: "Active Directory", phase: "Lateral Movement", label: "DCOM" },
+    "pages/ad-persistence.html": { section: "Active Directory", phase: "Persistence", label: "Persistence" },
+    "pages/ad-persistence-golden-ticket.html": { section: "Active Directory", phase: "Persistence", label: "Golden Ticket" },
+    "pages/ad-persistence-shadow-copy.html": { section: "Active Directory", phase: "Persistence", label: "Shadow Copy" },
     "pages/linux-commands.html": { section: "Linux Commands", phase: "Overview", label: "Linux Commands" },
     "pages/linux-information-resource.html": { section: "Linux Commands", phase: "Resources", label: "Information Resource" },
     "pages/linux-enumeration.html": { section: "Linux Commands", phase: "Enumeration", label: "Enumeration" },

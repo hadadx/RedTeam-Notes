@@ -1,27 +1,155 @@
-<section class="page active">
-  <h1>Reconnaissance</h1>
+<section class="page active prose-page">
+  <h1>DNS</h1>
   <p class="intro">
-    DNS commands for discovering records, name servers, and subdomains.
+    DNS (Domain Name System) is a distributed, hierarchical naming system that translates human-readable domain names
+    (for example, google.com) into IP addresses. Without DNS, users would have to remember IP addresses instead of
+    domain names.
   </p>
 
   <div class="section-title">
     <span></span>
-    <h2>DNS</h2>
+    <h2>How It Works</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>The client sends a DNS query to a Recursive Resolver.</li>
+    <li>If the answer is not cached, the resolver queries the DNS hierarchy.</li>
+    <li>Root Server identifies the Top-Level Domain (TLD), such as .com or .org.</li>
+    <li>TLD Server identifies the domain's Authoritative Name Server.</li>
+    <li>Authoritative Name Server returns the requested DNS record, such as A, AAAA, MX, TXT, or NS.</li>
+    <li>The resolver caches the response according to the TTL (Time To Live).</li>
+    <li>The resolver returns the IP address to the client.</li>
+    <li>The client uses the IP address to establish a connection with the destination server.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Ports</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    <strong>UDP/53</strong> - Default protocol for most DNS queries. It is fast and connectionless.
+  </p>
+  <p class="content-text">
+    <strong>TCP/53</strong> - Used for Zone Transfers (AXFR/IXFR), DNS responses that exceed the UDP size limit, or
+    retrying after truncation.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Common DNS Record Types</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li><strong>A</strong> - Domain to IPv4 address.</li>
+    <li><strong>AAAA</strong> - Domain to IPv6 address.</li>
+    <li><strong>CNAME</strong> - Alias to another hostname.</li>
+    <li><strong>MX</strong> - Mail server.</li>
+    <li><strong>NS</strong> - Authoritative name servers.</li>
+    <li><strong>TXT</strong> - Text records such as SPF, DKIM, verification tokens, and other metadata.</li>
+    <li><strong>PTR</strong> - Reverse DNS, IP to hostname.</li>
+    <li><strong>SOA</strong> - Zone configuration and authority information.</li>
+    <li><strong>SRV</strong> - Service location, such as LDAP or Kerberos.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Important Notes</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>DNS responses are cached according to their TTL (Time To Live).</li>
+    <li>A Recursive Resolver performs lookups on behalf of clients.</li>
+    <li>An Authoritative Name Server stores the official DNS records for a domain.</li>
+    <li>Zone Transfer (AXFR) can expose an organization's entire DNS zone if misconfigured.</li>
+    <li>Common attack techniques include DNS Spoofing, Cache Poisoning, DNS Tunneling, Zone Transfers, and Subdomain Enumeration.</li>
+    <li>DNS is one of the most valuable information sources during Reconnaissance.</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Query Whois Records On The Domain</h2>
     <span></span>
   </div>
 
   <div class="command-list">
     <div class="command-row">
-      <code class="copy-text">dig example.com any</code>
-      <button class="copy-button" type="button" title="Copy">Copy</button>
+      <code class="copy-text">whois megacorpone.com</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Query DNS Records</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">host -t {a|txt|ns|mx} megacorpone.com</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
     </div>
     <div class="command-row">
-      <code class="copy-text">subfinder -d example.com -all</code>
-      <button class="copy-button" type="button" title="Copy">Copy</button>
+      <code class="copy-text">dig {a|txt|ns|mx} domain.com</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Query DNS Records From A Specific DNS Server</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">dig {a|txt|ns|mx} domain.com @ns1.domain.com</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>DNS Zone Transfer (AXFR)</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">host -l megacorpone.com ns1.megacorpone.com</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
     </div>
     <div class="command-row">
-      <code class="copy-text">amass enum -passive -d example.com</code>
-      <button class="copy-button" type="button" title="Copy">Copy</button>
+      <code class="copy-text">dnsrecon -d megacorpone.com -t axfr @ns2.megacorpone.com</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
     </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Automated Tool</h2>
+    <span></span>
+  </div>
+
+  <div class="command-list">
+    <div class="command-row">
+      <code class="copy-text">dnsenum offseclab.io --threads 100</code>
+      <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1071/004/" target="_blank" rel="noreferrer">MITRE ATT&CK T1071.004</a>
   </div>
 </section>

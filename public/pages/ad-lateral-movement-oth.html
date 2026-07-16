@@ -1,0 +1,60 @@
+<section class="page active prose-page">
+  <h1>Overpass-the-Hash (OtH)</h1>
+
+  <p class="intro">
+    Overpass-the-Hash (also called "pass-the-key") is a lateral movement technique that upgrades an NTLM password hash
+    into a full Kerberos Ticket Granting Ticket (TGT). Instead of reusing the hash the traditional NTLM way, the
+    attacker feeds it into the Kerberos authentication process to request legitimate Kerberos tickets. These tickets can
+    then be used to obtain service tickets (TGS) and gain remote code execution as the target user, while avoiding NTLM
+    authentication over the network.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Requirements</h2>
+    <span></span>
+  </div>
+
+  <ul class="content-list">
+    <li>A valid NTLM hash of the target account (typically dumped from memory with a tool like Mimikatz).</li>
+    <li>The target domain must support Kerberos authentication.</li>
+    <li>A valid domain account (the one whose hash was obtained).</li>
+    <li>Ability to run the process in the target user's context (e.g., sekurlsa::pth from Mimikatz).</li>
+    <li>For remote execution, appropriate privileges on the target and a Kerberos-aware tool (e.g., PsExec, WMI, WinRM).</li>
+  </ul>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Advantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    No need to crack the password. Converts a hash into legitimate Kerberos tickets, so activity blends in with normal
+    domain traffic. Stealthier than traditional Pass-the-Hash because it avoids NTLM authentication. Enables use of any
+    Kerberos-based tooling once the TGT is generated.
+  </p>
+
+  <div class="section-title">
+    <span></span>
+    <h2>Disadvantages</h2>
+    <span></span>
+  </div>
+
+  <p class="content-text">
+    Requires generating a TGT (usually by triggering a domain action such as net use), adding an extra step over plain
+    PtH. Ticket requests are still recorded by the Key Distribution Center (KDC) and can be detected. Relies on a
+    Kerberos-enabled environment. Note: whoami will still show the original user, since it only reads the process token,
+    not imported Kerberos tickets.
+  </p>
+
+  <div class="section-title section-title-sub">
+    <span></span>
+    <h2>Resources</h2>
+    <span></span>
+  </div>
+
+  <div class="resource-links">
+    <a href="https://attack.mitre.org/techniques/T1550/002/" target="_blank" rel="noreferrer">MITRE ATT&amp;CK T1550.002</a>
+  </div>
+</section>
